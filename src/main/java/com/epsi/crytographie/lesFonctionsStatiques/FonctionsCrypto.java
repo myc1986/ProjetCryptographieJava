@@ -14,11 +14,11 @@ public abstract class FonctionsCrypto
 	{
 		StringBuilder messageTravail = new StringBuilder(message);
 		
-		messageTravail = new StringBuilder(messageTravail.toString().replaceAll("[����]", "e"));
-		messageTravail = new StringBuilder(messageTravail.toString().replaceAll("[���]", "a"));
-		messageTravail = new StringBuilder(messageTravail.toString().replaceAll("[��]", "u"));
-		messageTravail = new StringBuilder(messageTravail.toString().replaceAll("[��]", "o"));
-		messageTravail = new StringBuilder(messageTravail.toString().replaceAll("[��]", "i"));
+		messageTravail = new StringBuilder(messageTravail.toString().replaceAll("[éèê]", "e"));
+		messageTravail = new StringBuilder(messageTravail.toString().replaceAll("[àâ]", "a"));
+		messageTravail = new StringBuilder(messageTravail.toString().replaceAll("[ùû]", "u"));
+		messageTravail = new StringBuilder(messageTravail.toString().replaceAll("[ô]", "o"));
+		messageTravail = new StringBuilder(messageTravail.toString().replaceAll("[î]", "i"));
 		
 		return messageTravail.toString().toUpperCase();
 	}

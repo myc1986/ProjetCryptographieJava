@@ -9,13 +9,14 @@ public class CLexiqueCesar extends CLexique implements Cloneable, ILexiqueCesar 
 	public CLexiqueCesar()
 	{
 		super();
+		InitialiserLesDictionnaires();
 	}
 	
 	private void InitialiserDictionnaireClesCaracteres()
 	{
 		ArrayList<String> alphabet = GetAlphabetFrancaisMajuscule();
 		
-		for (int i = 0; i <= alphabet.size(); i++) {
+		for (int i = 0; i < alphabet.size(); i++) {
 			_lesClesCaracteres.put(alphabet.get(i).toString(), String.valueOf(i+1));
 		}
 	}
@@ -24,7 +25,7 @@ public class CLexiqueCesar extends CLexique implements Cloneable, ILexiqueCesar 
 	{
 		ArrayList<String> alphabet = GetAlphabetFrancaisMajuscule();
 		
-		for (int i = 0; i <= alphabet.size(); i++) {
+		for (int i = 0; i < alphabet.size(); i++) {
 			_lesCaracteres.put(String.valueOf(i+1), alphabet.get(i).toString());
 		}
 	}

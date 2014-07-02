@@ -11,7 +11,8 @@ import com.epsi.crytographie.lesInterfaces.IEncodeur;
 public class ProgCryptographie {
 	
 	public static void main(String[] args) {
-		EssaiAnalyseTexte("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet �cole\\projets_java\\text_analyse_fr2.txt");
+		EssaiCesar();
+		EssaiAnalyseTexte("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\text_analyse_fr2.txt");
 		
 		EssaiPermutation();
 		EssaiPolybe();
@@ -51,7 +52,7 @@ public class ProgCryptographie {
 		System.out.println("Message décodé : "+messageDecode);
 	}
 	
-	public void EssaiCesar()
+	public static void EssaiCesar()
 	{
 		String message = "Bonjour, nous l'avons déjà fait ";
 		

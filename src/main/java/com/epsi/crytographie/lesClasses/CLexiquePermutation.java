@@ -33,7 +33,7 @@ public class CLexiquePermutation extends CLexique  implements ILexiquePermutatio
 	{
 		ArrayList<String> alphabet = GetAlphabetFrancaisMajuscule();
 		
-		for (int i = 0; i <= alphabet.size(); i++) {
+		for (int i = 0; i < alphabet.size(); i++) {
 			_lesClesCaracteres.put(alphabet.get(i).toString(), String.valueOf(i+1));
 		}
 	}
@@ -42,7 +42,7 @@ public class CLexiquePermutation extends CLexique  implements ILexiquePermutatio
 	{
 		ArrayList<String> alphabet = GetAlphabetFrancaisMajuscule();
 		
-		for (int i = 0; i <= alphabet.size(); i++) {
+		for (int i = 0; i < alphabet.size(); i++) {
 			_lesCaracteres.put(String.valueOf(i+1), alphabet.get(i).toString());
 		}
 	}

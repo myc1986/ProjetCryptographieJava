@@ -22,14 +22,11 @@ public class CLexiquePolybe extends CLexique implements ILexiquePolybe {
 		Integer iCount = 0;
 		
 		for (Integer iLigne = 1; iLigne <= MAX_COLONNE; iLigne++) {
-			StringBuilder monIdCase = new StringBuilder();
 			
-			monIdCase.append("L");
-			monIdCase.append(iLigne);
 			
 			for (Integer iColonne = 1; iColonne <= MAX_COLONNE; iColonne++) {
-				
-				monIdCase.append("C");
+				StringBuilder monIdCase = new StringBuilder();
+				monIdCase.append(iLigne);
 				monIdCase.append(iColonne);
 				
 				_lesCaracteres.put(monIdCase.toString(), lesLettres.get(iCount).toString());

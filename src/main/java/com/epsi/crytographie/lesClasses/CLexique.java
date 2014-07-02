@@ -64,17 +64,17 @@ public abstract class CLexique implements ILexique, Cloneable {
 	
 	public boolean ExisteCaractere(String valeur)
 	{
-		return _lesCaracteres.containsKey(valeur);
+		return _lesClesCaracteres.containsKey(valeur);
 	}
 	
 	public boolean ExisteNumber(Integer nombre)
 	{
-		return _lesClesCaracteres.containsKey(nombre);
+		return _lesCaracteres.containsKey(nombre.toString());
 	}
 	
 	public String getCharactere(int cle)
 	{
-		return _lesCaracteres.get(cle);
+		return _lesCaracteres.get(Integer.toString(cle));
 	}
 	
 	public String GetNumber(String caractere)
