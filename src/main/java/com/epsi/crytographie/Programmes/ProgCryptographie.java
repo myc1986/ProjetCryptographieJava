@@ -1,26 +1,35 @@
 package com.epsi.crytographie.Programmes;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+
 import com.epsi.crytographie.lesClasses.CAnalyseStaistiqueCaracteres;
 import com.epsi.crytographie.lesClasses.CCesar;
 import com.epsi.crytographie.lesClasses.CPermutation;
 import com.epsi.crytographie.lesClasses.CPolybe;
+import com.epsi.crytographie.lesFonctionsStatiques.FonctionsCrypto;
 import com.epsi.crytographie.lesInterfaces.IAnalyseurCaracteres;
 import com.epsi.crytographie.lesInterfaces.IDecodeur;
 import com.epsi.crytographie.lesInterfaces.IEncodeur;
 
 public class ProgCryptographie {
 	
-	public static void main(String[] args) {
-		EssaiCesar();
+	public static void main(String[] args) throws FileNotFoundException, IOException {
+		CesarDecoder("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\text_analyse_fr2.txt");
+		EssaiCesar("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\text_analyse_fr2.txt");
 		EssaiAnalyseTexte("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\text_analyse_fr2.txt");
-		
-		EssaiPermutation();
-		EssaiPolybe();
+		EssaiPermutation("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\text_analyse_fr2.txt");
+		EssaiPolybe("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\text_analyse_fr2.txt");
 	}
 	
-	public static void EssaiPolybe()
+	public static void EssaiPolybe(String chemin) throws FileNotFoundException, IOException
 	{
-		String message = "Bonjour, nous l'avons fait";
+		String message = FonctionsCrypto.ObtenirTexteBrut(chemin);
 		
 		CPolybe monProgPermutation = new CPolybe();
 		
@@ -35,9 +44,9 @@ public class ProgCryptographie {
 		System.out.println("Message décodé : "+messageDecode);
 	}
 	
-	public static void EssaiPermutation()
+	public static void EssaiPermutation(String chemin) throws FileNotFoundException, IOException
 	{
-		String message = "Bonjour, nous l'avons fait";
+		String message = FonctionsCrypto.ObtenirTexteBrut(chemin);
 		
 		CPermutation monProgPermutation = new CPermutation();
 		
@@ -52,9 +61,9 @@ public class ProgCryptographie {
 		System.out.println("Message décodé : "+messageDecode);
 	}
 	
-	public static void EssaiCesar()
+	public static void EssaiCesar(String chemin) throws FileNotFoundException, IOException
 	{
-		String message = "Bonjour, nous l'avons déjà fait ";
+		String message = FonctionsCrypto.ObtenirTexteBrut(chemin);
 		
 		IDecodeur monDecodeur = new CCesar();
 		IEncodeur monEncodeur = new CCesar();
@@ -65,6 +74,42 @@ public class ProgCryptographie {
 		System.out.println("Message à coder : "+message);
 		System.out.println("Message codé : "+messageEncode);
 		System.out.println("Message décodé : "+messageDecode);
+		
+	}
+	
+	public static void CesarDecoder(String chemin) throws FileNotFoundException, IOException
+	{
+		
+		boolean decode = false;
+		Integer iDecalage = 0;
+		
+		while (!decode) {
+			String message = FonctionsCrypto.ObtenirTexteBrut(chemin);
+			
+			CCesar monCesar = new CCesar();
+			monCesar.setDecalage(iDecalage);
+			
+			IDecodeur monDecodeur = monCesar;
+			
+			String messageDecode = monDecodeur.Decoder(message);
+			
+			System.out.println("Message codé : "+message);
+			System.out.println("Message décodé : "+messageDecode);
+			
+			Scanner scan = new Scanner(System.in);
+			System.out.println("Ce messag est il bien décodé ? 1: OUI, 0:NON");
+			String reponse = scan.nextLine();
+			
+			if(reponse.equals("1"))
+			{
+				decode = true;
+				System.out.println("Message décodé Finale: "+messageDecode);
+				System.out.println("Décalage : "+iDecalage.toString());
+				FonctionsCrypto.GenererFichier(messageDecode, chemin);
+			}
+			
+			iDecalage = iDecalage+1;
+		}
 	}
 	
 	private static void EssaiAnalyseTexte(String cheminFicherTexte)

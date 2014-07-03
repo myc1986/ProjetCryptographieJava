@@ -1,8 +1,11 @@
 package com.epsi.crytographie.lesFonctionsStatiques;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -43,5 +46,22 @@ public abstract class FonctionsCrypto
 		monBuffer.close();
 		
 		return monBuilderString.toString();
+	}
+	
+	public static void GenererFichier(String message, String cheminFichier)
+	{
+		try {
+			
+					
+			BufferedWriter ceBuffer = new BufferedWriter(new FileWriter(new File(cheminFichier.replace(".", "1."))));
+			
+			ceBuffer.write(message);
+			 
+			ceBuffer.close();
+			}
+			catch (IOException e)
+			{
+			e.printStackTrace();
+			}
 	}
 }

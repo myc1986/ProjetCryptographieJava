@@ -24,6 +24,11 @@ public class CFichier {
 		}
 	}
 	
+	public CFichier(StringBuilder contenuFichier)
+	{
+		_contenuFichier = contenuFichier;
+	}
+	
 	public String ObtenirTexteBrutSurUneLigne()
 	{
 		String chaine = "";
@@ -98,5 +103,10 @@ public class CFichier {
 		}
 		
 		return lesLignes;
+	}
+	
+	public void CreerFichierSortie(String cheminFichierSortie)
+	{
+		
 	}
 }
