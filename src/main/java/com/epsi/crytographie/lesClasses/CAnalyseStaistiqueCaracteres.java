@@ -145,4 +145,9 @@ public class CAnalyseStaistiqueCaracteres implements IAnalyseurCaracteres{
 	public ELangue ObtenirLangueDuTexteCode(String cheminFichierTexte) {
 		return GetLangueTexte(cheminFichierTexte);
 	}
+	
+	public IStats GetStats()
+	{
+		return _maStats;
+	}
 }

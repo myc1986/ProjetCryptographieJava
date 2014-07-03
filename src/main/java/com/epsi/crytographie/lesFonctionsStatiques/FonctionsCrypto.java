@@ -48,12 +48,22 @@ public abstract class FonctionsCrypto
 		return monBuilderString.toString();
 	}
 	
-	public static void GenererFichier(String message, String cheminFichier)
+	public static void GenererFichier(String message, String cheminFichier, boolean encode, String mode)
 	{
 		try {
 			
-					
-			BufferedWriter ceBuffer = new BufferedWriter(new FileWriter(new File(cheminFichier.replace(".", "1."))));
+			
+			
+			if(encode)
+			{
+				cheminFichier = cheminFichier.replace(".", "encode"+mode+".");
+			}
+			else
+			{
+				cheminFichier = cheminFichier.replace(".", "decode"+mode+".");
+			}
+			
+			BufferedWriter ceBuffer = new BufferedWriter(new FileWriter(new File(cheminFichier)));
 			
 			ceBuffer.write(message);
 			 

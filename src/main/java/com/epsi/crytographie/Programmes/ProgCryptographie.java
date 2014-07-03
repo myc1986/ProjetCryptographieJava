@@ -20,11 +20,13 @@ import com.epsi.crytographie.lesInterfaces.IEncodeur;
 public class ProgCryptographie {
 	
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		CesarDecoder("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\text_analyse_fr2.txt");
-		EssaiCesar("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\text_analyse_fr2.txt");
-		EssaiAnalyseTexte("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\text_analyse_fr2.txt");
-		EssaiPermutation("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\text_analyse_fr2.txt");
-		EssaiPolybe("C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\text_analyse_fr2.txt");
+		String chemin = "C:\\Users\\Myc\\Google Drive\\Cours\\Cours EPSI\\Projet école\\projets_java\\texte4.txt";
+		//CesarDecoder(chemin);
+		//EssaiCesar(chemin);
+		//EssaiAnalyseTexte(chemin);
+		//EssaiPermutation(chemin);
+		//EssaiPolybe(chemin);
+		EssaiAnalyseTexte(chemin);
 	}
 	
 	public static void EssaiPolybe(String chemin) throws FileNotFoundException, IOException
@@ -41,7 +43,9 @@ public class ProgCryptographie {
 		
 		System.out.println("Message à coder : "+message);
 		System.out.println("Message codé : "+messageEncode);
+		FonctionsCrypto.GenererFichier(messageEncode, chemin, true, "Polybe");
 		System.out.println("Message décodé : "+messageDecode);
+		FonctionsCrypto.GenererFichier(messageDecode, chemin, false, "Polybe");
 	}
 	
 	public static void EssaiPermutation(String chemin) throws FileNotFoundException, IOException
@@ -58,7 +62,9 @@ public class ProgCryptographie {
 		
 		System.out.println("Message à coder : "+message);
 		System.out.println("Message codé : "+messageEncode);
+		FonctionsCrypto.GenererFichier(messageEncode, chemin, true, "Permutation");
 		System.out.println("Message décodé : "+messageDecode);
+		FonctionsCrypto.GenererFichier(messageDecode, chemin, false, "Permutation");
 	}
 	
 	public static void EssaiCesar(String chemin) throws FileNotFoundException, IOException
@@ -73,7 +79,9 @@ public class ProgCryptographie {
 		
 		System.out.println("Message à coder : "+message);
 		System.out.println("Message codé : "+messageEncode);
+		FonctionsCrypto.GenererFichier(messageEncode, chemin, true, "Cesar");
 		System.out.println("Message décodé : "+messageDecode);
+		FonctionsCrypto.GenererFichier(messageDecode, chemin, false, "Cesar");
 		
 	}
 	
@@ -105,7 +113,7 @@ public class ProgCryptographie {
 				decode = true;
 				System.out.println("Message décodé Finale: "+messageDecode);
 				System.out.println("Décalage : "+iDecalage.toString());
-				FonctionsCrypto.GenererFichier(messageDecode, chemin);
+				FonctionsCrypto.GenererFichier(messageDecode, chemin, false, "CesarDecode");
 			}
 			
 			iDecalage = iDecalage+1;
@@ -116,14 +124,15 @@ public class ProgCryptographie {
 	{
 		IAnalyseurCaracteres monAnalyseur = new CAnalyseStaistiqueCaracteres();
 		
-		
 		switch(monAnalyseur.ObtenirLangueDuTexte(cheminFicherTexte))
 		{
 			case FRANCAIS:
 				System.out.println("Le texte est en francais");
+				monAnalyseur.GetStats().AfficherLesStats();
 				break;
 			case ANGLAIS:
 				System.out.println("Le texte est en anglais");
+				monAnalyseur.GetStats().AfficherLesStats();
 				break;
 			default:
 				System.out.println("Impossible de déterminé la langue");

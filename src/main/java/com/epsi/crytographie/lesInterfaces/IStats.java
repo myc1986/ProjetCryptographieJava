@@ -14,4 +14,6 @@ public interface IStats {
 	int GetFrequenceTotale();
 	
 	double GetPourcentageCle(String uneCle);
+	
+	void AfficherStats();
 }

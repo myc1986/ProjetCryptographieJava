@@ -87,4 +87,11 @@ public class CStats implements IStats {
 		
 		return pourcentage;
 	}
+	
+	public void AfficherStats()
+	{
+		for (CDonneeStats stats : _mesStats) {
+			System.out.println("Clé :"+stats.GetCle()+" "+stats.GetPourcentage());
+		}
+	}
 }
