@@ -126,8 +126,4 @@ public class CPolybe implements IEncodeur, IDecodeur {
 	public CMessage Encoder(CMessage leMessage) {
 		return EncoderMessage(leMessage);
 	}
-	
-	public void setDecalage(int decalage){
-		_decalage = decalage;
-	}
 }
